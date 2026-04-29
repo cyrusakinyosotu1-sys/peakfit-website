@@ -18,30 +18,121 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero animate-on-scroll">
       <h1>Transform Your Body.<br>Elevate Your Life.</h1>
       <p>Expert coaching, premium equipment, and a community that pushes you past your limits.</p>
       <a href="classes.html" class="btn">Explore Programs</a>
     </section>
 
+    <!-- Stats Counter -->
+    <section class="stats-grid animate-on-scroll">
+      <div class="stat-card">
+        <div class="stat-number" data-target="500">0</div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">Expert Trainers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="100">0</div>
+        <div class="stat-label">Classes Weekly</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="98">0</div>
+        <div class="stat-label">% Satisfaction</div>
+      </div>
+    </section>
+
+    <!-- Features -->
     <section class="features">
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <h3>Personal Training</h3>
         <p>Custom programs built around your goals, schedule, and recovery needs.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <h3>Group Classes</h3>
         <p>High-energy sessions led by certified instructors who keep you accountable.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <h3>Open Gym Access</h3>
         <p>Train on your terms with commercial-grade equipment available daily.</p>
       </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials animate-on-scroll">
+      <h2 style="text-align:center; margin-bottom:2rem;">What Our Members Say</h2>
+      <div class="testimonial-card">
+        <p>"PeakFit changed my life. The trainers actually care about your progress, not just your membership fee."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JD</div>
+          <div>
+            <strong>Jane Doe</strong><br>
+            <small>Member since 2024</small>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>"The HIIT classes are intense but so worth it. I've never felt stronger or more confident."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MS</div>
+          <div>
+            <strong>Mike Smith</strong><br>
+            <small>Member since 2025</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="text-align:center; padding:3rem 2rem; background:var(--bg-card); border-radius:12px; margin:3rem 0;" class="animate-on-scroll">
+      <h2 style="margin-bottom:1rem;">Ready to Start Your Journey?</h2>
+      <p style="color:var(--text-muted); margin-bottom:2rem;">Join PeakFit today and get your first week free.</p>
+      <a href="contact.html" class="btn">Get Started Free</a>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
   </footer>
+
+  <script>
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.querySelector('.stat-number')) {
+            animateCounters();
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Counter Animation
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current) + '+';
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + '+';
+          }
+        };
+        updateCounter();
+      });
+    }
+  </script>
 </body>
 </html>

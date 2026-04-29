@@ -18,30 +18,99 @@
   </header>
 
   <main>
-    <section class="page-header">
+    <section class="page-header animate-on-scroll">
       <h1>Training Programs</h1>
     </section>
+
+    <!-- Pricing Toggle -->
+    <div class="pricing-toggle animate-on-scroll">
+      <button class="toggle-btn active" data-period="monthly">Monthly</button>
+      <button class="toggle-btn" data-period="yearly">Yearly <span style="color:#4ade80; font-size:0.8rem;">(Save 20%)</span></button>
+    </div>
+
+    <!-- Classes Grid -->
     <section class="classes-grid">
-      <article class="class-card">
+      <article class="class-card animate-on-scroll">
         <h3>HIIT Burn</h3>
         <p>30-minute high-intensity intervals designed to maximize calorie burn and cardiovascular endurance.</p>
         <span>Mon / Wed / Fri • 6:30 AM</span>
+        <div style="margin-top:1rem; font-weight:700; color:var(--accent-blue);" class="price" data-monthly="$29" data-yearly="$232">$29/mo</div>
       </article>
-      <article class="class-card">
+      <article class="class-card animate-on-scroll">
         <h3>Strength & Conditioning</h3>
         <p>Compound lifts, progressive overload, and mobility work for real-world performance.</p>
         <span>Tue / Thu • 5:00 PM</span>
+        <div style="margin-top:1rem; font-weight:700; color:var(--accent-blue);" class="price" data-monthly="$39" data-yearly="$312">$39/mo</div>
       </article>
-      <article class="class-card">
+      <article class="class-card animate-on-scroll">
         <h3>Yoga & Recovery</h3>
         <p>Improve flexibility, reduce soreness, and reset your nervous system for faster gains.</p>
         <span>Sat • 9:00 AM</span>
+        <div style="margin-top:1rem; font-weight:700; color:var(--accent-blue);" class="price" data-monthly="$25" data-yearly="$200">$25/mo</div>
       </article>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="margin:4rem 0;" class="animate-on-scroll">
+      <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question">Do I need experience to join?</button>
+        <div class="faq-answer">
+          <p>No! All our classes offer modifications for every fitness level. Our trainers will help you start safely and progress at your own pace.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What should I bring to class?</button>
+        <div class="faq-answer">
+          <p>Just water, a towel, and comfortable workout clothes. We provide all equipment, mats, and towels if needed.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I cancel my membership?</button>
+        <div class="faq-answer">
+          <p>Yes, anytime. No contracts, no hidden fees. Cancel online with 24-hour notice.</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
   </footer>
+
+  <script>
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Pricing Toggle
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const period = btn.dataset.period;
+        document.querySelectorAll('.price').forEach(price => {
+          price.textContent = price.dataset[period] + (period === 'monthly' ? '/mo' : '/yr');
+        });
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

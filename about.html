@@ -18,18 +18,84 @@
   </header>
 
   <main>
-    <section class="page-header">
+    <section class="page-header animate-on-scroll">
       <h1>Our Mission</h1>
     </section>
-    <section class="content">
+
+    <section class="content animate-on-scroll">
       <p>PeakFit was founded on one principle: <strong>consistency beats intensity</strong>. We don't sell quick fixes. We build sustainable habits, progressive programming, and a community that shows up for each other.</p>
       <p>Our facility is equipped with commercial-grade machines, free weights, and recovery zones. Every trainer holds nationally recognized certifications, and our programming adapts to beginners, athletes, and everyone in between.</p>
       <p>Train hard. Recover smart. Stay consistent. That's the PeakFit way.</p>
+    </section>
+
+    <!-- Values Accordion -->
+    <section style="margin:3rem 0;" class="animate-on-scroll">
+      <h2 style="text-align:center; margin-bottom:2rem;">Our Core Values</h2>
+      <div class="faq-item">
+        <button class="faq-question">Community First</button>
+        <div class="faq-answer">
+          <p>We believe fitness is better together. Our members support each other, celebrate wins, and push through challenges as a team.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Science-Backed Methods</button>
+        <div class="faq-answer">
+          <p>Every program is designed by certified professionals using the latest research in exercise physiology and nutrition.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Inclusive Environment</button>
+        <div class="faq-answer">
+          <p>Everyone belongs at PeakFit. All bodies, all levels, all goals. We meet you where you are and help you grow.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section style="margin:3rem 0;" class="animate-on-scroll">
+      <h2 style="text-align:center; margin-bottom:2rem;">Meet Our Trainers</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h3>Alex Rivera</h3>
+          <p>Strength & Conditioning Specialist • 10+ years experience</p>
+        </div>
+        <div class="feature-card">
+          <h3>Jamie Chen</h3>
+          <p>HIIT & Mobility Coach • Former competitive athlete</p>
+        </div>
+        <div class="feature-card">
+          <h3>Taylor Kim</h3>
+          <p>Yoga & Recovery Expert • Certified mindfulness instructor</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
   </footer>
+
+  <script>
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
