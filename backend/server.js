@@ -2,23 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const Database = require('better-sqlite3');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ===== DATABASE SETUP =====
-const db = new Database(path.join(__dirname, 'inquiries.db'));
-db.exec(`
-  CREATE TABLE IF NOT EXISTS inquiries (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    message TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`);
-console.log('✅ SQLite database initialized');
+// ===== IN-MEMORY STORAGE (No SQLite needed!) =====
+// Stores inquiries temporarily. Resets on server restart (fine for demo).
+const inquiries = [];
 
 // ===== EMAIL SERVICE =====
 let resend;
@@ -52,15 +42,20 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Save to database
-    const stmt = db.prepare('INSERT INTO inquiries (name, email, message) VALUES (?, ?, ?)');
-    stmt.run(name, email, message);
+    // Save to in-memory list
+    inquiries.unshift({
+      id: Date.now(),
+      name,
+      email,
+      message,
+      created_at: new Date().toISOString()
+    });
 
     // Send email
     await resend.emails.send({
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: ` New Inquiry from ${name}`,
+      subject: `🔥 New Inquiry from ${name}`,
       html: `<h3>New Contact Form Submission</h3><p><b>Name:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Message:</b><br>${message.replace(/\n/g, '<br>')}</p>`
     });
 
@@ -77,8 +72,7 @@ app.get('/api/admin/inquiries', (req, res) => {
   if (req.query.key !== process.env.ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
-  const rows = db.prepare('SELECT * FROM inquiries ORDER BY created_at DESC').all();
-  res.json(rows);
+  res.json(inquiries);
 });
 
 // ===== ADMIN PAGE ROUTE =====
