@@ -6,18 +6,33 @@
   <title>PeakFit | Admin Panel</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .admin-container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-    .admin-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; }
+    .admin-wrapper { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .admin-header h1 { font-size: 1.8rem; margin: 0; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.2s; }
+    .stat-card:hover { transform: translateY(-3px); }
+    .stat-card h3 { font-size: 2rem; margin: 0 0 0.3rem; color: var(--accent-blue); }
+    .stat-card p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+    .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 0.6rem 1.2rem; border-radius: 8px 8px 0 0; transition: 0.2s; }
+    .tab-btn.active { background: var(--bg-card); color: var(--accent-blue); font-weight: 600; border-bottom: 2px solid var(--accent-blue); }
+    .admin-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
     .admin-table th, .admin-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
-    .admin-table th { background: var(--bg-dark); font-weight: 600; color: var(--accent-blue); }
+    .admin-table th { background: var(--bg-dark); font-weight: 600; color: var(--text-main); }
+    .admin-table tr:last-child td { border-bottom: none; }
     .admin-table tr:hover { background: var(--bg-hover); }
-    .status-badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
-    .status-new { background: rgba(0, 212, 255, 0.2); color: var(--accent-blue); }
-    .login-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100; }
-    .login-box { background: var(--bg-card); padding: 2rem; border-radius: 12px; width: 100%; max-width: 400px; text-align: center; }
-    .login-box input { width: 100%; padding: 0.8rem; margin: 1rem 0; background: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; }
-    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
+    .badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; }
+    .badge-green { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+    .badge-blue { background: rgba(0, 212, 255, 0.15); color: var(--accent-blue); }
+    .login-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(4px); }
+    .login-box { background: var(--bg-card); padding: 2.5rem; border-radius: 16px; width: 100%; max-width: 400px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease; }
+    .login-box input { width: 100%; padding: 0.9rem; margin: 1rem 0; background: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; font-size: 1rem; transition: 0.2s; }
+    .login-box input:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(0,212,255,0.2); }
+    .login-error { color: #f87171; margin-top: 0.8rem; display: none; font-size: 0.9rem; }
+    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); background: var(--bg-card); border-radius: 12px; border: 1px dashed var(--border-color); }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @media (max-width: 600px) { .admin-header { flex-direction: column; align-items: flex-start; } .stats-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -34,91 +49,115 @@
   <div id="loginOverlay" class="login-overlay">
     <div class="login-box">
       <h2>🔒 Admin Access</h2>
-      <p style="color:var(--text-muted); margin-bottom:1rem;">Enter your admin key to continue</p>
+      <p style="color:var(--text-muted); margin-bottom:0.5rem;">Enter your admin key to continue</p>
       <input type="password" id="adminKey" placeholder="Admin Key" autocomplete="off">
-      <button class="btn" onclick="verifyAdmin()">Unlock Panel</button>
-      <p id="loginError" style="color:#f87171; margin-top:0.5rem; display:none;">Invalid key</p>
+      <button class="btn" onclick="verifyAdmin()">Unlock Dashboard</button>
+      <p id="loginError" class="login-error">Invalid key</p>
     </div>
   </div>
 
-  <main class="admin-container">
+  <main class="admin-wrapper">
     <div class="admin-header">
-      <h1>📊 Contact Inquiries</h1>
-      <button class="btn" onclick="loadInquiries()" style="padding:0.5rem 1rem;">🔄 Refresh</button>
+      <h1>📊 Admin Dashboard</h1>
+      <button class="btn" onclick="refreshData()" style="padding:0.5rem 1rem; background:var(--bg-card); border:1px solid var(--border-color);">🔄 Refresh</button>
     </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <h3 id="statUsers">0</h3>
+        <p>Total Users</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="statInquiries">0</h3>
+        <p>Contact Inquiries</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="statRecent">--</h3>
+        <p>Last Activity</p>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('users')">👤 Users</button>
+      <button class="tab-btn" onclick="switchTab('inquiries')">📩 Inquiries</button>
+    </div>
+
     <div id="tableContainer">
-      <div class="empty-state">Loading submissions...</div>
+      <div class="empty-state">⏳ Waiting for authentication...</div>
     </div>
   </main>
 
   <script>
     let adminKey = '';
+    let currentTab = 'users';
+    let cachedData = { users: [], inquiries: [] };
 
     function verifyAdmin() {
       const input = document.getElementById('adminKey').value.trim();
       if (!input) return;
       adminKey = input;
-      loadInquiries();
+      refreshData();
     }
 
-    async function loadInquiries() {
-      const container = document.getElementById('tableContainer');
-      container.innerHTML = '<div class="empty-state">⏳ Fetching data...</div>';
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderTable();
+    }
 
+    async function refreshData() {
+      document.getElementById('tableContainer').innerHTML = '<div class="empty-state">⏳ Fetching data...</div>';
       try {
-        const res = await fetch(`/api/admin/inquiries?key=${encodeURIComponent(adminKey)}`);
-        if (!res.ok) {
-          document.getElementById('loginOverlay').style.display = 'flex';
-          document.getElementById('loginError').style.display = 'block';
-          return;
-        }
-
-        const data = await res.json();
-        document.getElementById('loginOverlay').style.display = 'none';
-
-        if (data.length === 0) {
-          container.innerHTML = '<div class="empty-state">📭 No inquiries yet. Check back after someone submits the contact form!</div>';
-          return;
-        }
-
-        let html = `
-          <table class="admin-table">
-            <thead>
-              <tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th><th>Status</th></tr>
-            </thead>
-            <tbody>`;
+        const [usersRes, inquiriesRes] = await Promise.all([
+          fetch(`/api/admin/users?key=${encodeURIComponent(adminKey)}`),
+          fetch(`/api/admin/inquiries?key=${encodeURIComponent(adminKey)}`)
+        ]);
+        if (!usersRes.ok || !inquiriesRes.ok) throw new Error('Unauthorized');
         
-        data.forEach(row => {
-          const date = new Date(row.created_at).toLocaleString();
-          html += `
-            <tr>
-              <td><strong>${escapeHtml(row.name)}</strong></td>
-              <td>${escapeHtml(row.email)}</td>
-              <td style="max-width:300px; white-space:pre-wrap;">${escapeHtml(row.message)}</td>
-              <td style="color:var(--text-muted); font-size:0.9rem;">${date}</td>
-              <td><span class="status-badge status-new">New</span></td>
-            </tr>`;
-        });
-
-        html += '</tbody></table>';
-        container.innerHTML = html;
-
+        cachedData.users = await usersRes.json();
+        cachedData.inquiries = await inquiriesRes.json();
+        
+        document.getElementById('loginOverlay').style.display = 'none';
+        updateStats();
+        renderTable();
       } catch (err) {
-        container.innerHTML = `<div class="empty-state">❌ Error loading data. Check console.</div>`;
-        console.error(err);
+        document.getElementById('loginOverlay').style.display = 'flex';
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('tableContainer').innerHTML = '<div class="empty-state">❌ Failed to load data. Check your key.</div>';
       }
     }
 
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+    function updateStats() {
+      document.getElementById('statUsers').textContent = cachedData.users.length;
+      document.getElementById('statInquiries').textContent = cachedData.inquiries.length;
+      const allDates = [...cachedData.users, ...cachedData.inquiries].map(d => new Date(d.created_at));
+      const latest = allDates.length ? allDates.sort((a,b) => b-a)[0] : null;
+      document.getElementById('statRecent').textContent = latest ? latest.toLocaleDateString() : '--';
     }
 
-    // Allow Enter key to submit
-    document.getElementById('adminKey').addEventListener('keypress', e => {
-      if (e.key === 'Enter') verifyAdmin();
-    });
+    function renderTable() {
+      const container = document.getElementById('tableContainer');
+      const data = currentTab === 'users' ? cachedData.users : cachedData.inquiries;
+      if (!data.length) {
+        container.innerHTML = `<div class="empty-state">📭 No ${currentTab} found yet.</div>`;
+        return;
+      }
+      let html = `<table class="admin-table"><thead><tr>`;
+      if (currentTab === 'users') {
+        html += `<th>Name</th><th>Email</th><th>Joined</th><th>Status</th></tr></thead><tbody>`;
+        data.forEach(u => {
+          html += `<tr><td><strong>${u.name}</strong></td><td>${u.email}</td><td>${new Date(u.created_at).toLocaleDateString()}</td><td><span class="badge badge-green">Active</span></td></tr>`;
+        });
+      } else {
+        html += `<th>Name</th><th>Email</th><th>Message Preview</th><th>Received</th><th>Status</th></tr></thead><tbody>`;
+        data.forEach(row => {
+          const preview = row.message.length > 40 ? row.message.substring(0, 40) + '...' : row.message;
+          html += `<tr><td><strong>${row.name}</strong></td><td>${row.email}</td><td>${preview}</td><td>${new Date(row.created_at).toLocaleDateString()}</td><td><span class="badge badge-blue">New</span></td></tr>`;
+        });
+      }
+      container.innerHTML = html + '</tbody></table>';
+    }
   </script>
 </body>
 </html>
