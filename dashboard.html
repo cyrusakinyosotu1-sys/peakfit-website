@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeakFit | My Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">PeakFit</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="classes.html">Classes</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="active">My Dashboard</a>
+      <a href="index.html" style="color:#f87171;">Logout</a>
+    </nav>
+  </header>
+
+  <main class="animate-on-scroll">
+    <section class="page-header" style="background:var(--bg-card); border-radius:12px; margin-bottom:2rem;">
+      <h1>👋 Welcome back, Cyrus!</h1>
+      <p>You're on a 5-day streak. Keep it up!</p>
+    </section>
+
+    <div class="stats-grid" style="margin-bottom:2rem;">
+      <div class="stat-card">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Workouts This Month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8.5</div>
+        <div class="stat-label">Hours Trained</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Goals Achieved</div>
+      </div>
+    </div>
+
+    <section class="features" style="margin-bottom:3rem;">
+      <article class="feature-card" style="flex:2;">
+        <h3>🔥 Next Upcoming Class</h3>
+        <p style="font-size:1.1rem; margin:0.5rem 0; font-weight:700;">HIIT Burn</p>
+        <p style="color:var(--accent-blue);">Today at 6:30 AM</p>
+        <button class="btn" style="margin-top:1rem;">Book Seat</button>
+      </article>
+      
+      <article class="feature-card">
+        <h3>📊 Progress</h3>
+        <p>Weight: 175 lbs</p>
+        <p>Bench Max: 215 lbs</p>
+        <p style="color:#4ade80; margin-top:0.5rem;">+5 lbs this week!</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
