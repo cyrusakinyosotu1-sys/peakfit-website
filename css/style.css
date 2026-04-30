@@ -779,3 +779,8 @@ html { scroll-behavior: smooth; }
     padding: 1rem;
   }
 }
+/* ===== ABOUT PAGE TIMELINE ===== */
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .feature-card { padding: 1.25rem !important; }
+}

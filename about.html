@@ -18,56 +18,116 @@
   </header>
 
   <main>
+    <!-- Hero Header -->
     <section class="page-header animate-on-scroll">
       <h1>Our Mission</h1>
+      <p style="max-width:600px; margin:0 auto; color:var(--text-muted);">
+        Building stronger bodies and communities since 2020.
+      </p>
     </section>
 
-    <section class="content animate-on-scroll">
+    <!-- Story Section -->
+    <section class="content animate-on-scroll" style="text-align:center; max-width:800px; margin:0 auto 3rem;">
       <p>PeakFit was founded on one principle: <strong>consistency beats intensity</strong>. We don't sell quick fixes. We build sustainable habits, progressive programming, and a community that shows up for each other.</p>
       <p>Our facility is equipped with commercial-grade machines, free weights, and recovery zones. Every trainer holds nationally recognized certifications, and our programming adapts to beginners, athletes, and everyone in between.</p>
-      <p>Train hard. Recover smart. Stay consistent. That's the PeakFit way.</p>
+      <p style="font-weight:600; color:var(--accent-blue); margin-top:1rem;">Train hard. Recover smart. Stay consistent. That's the PeakFit way.</p>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="stats-grid animate-on-scroll" style="margin:3rem 0;">
+      <div class="stat-card">
+        <div class="stat-number" data-target="2020">0</div>
+        <div class="stat-label">Founded</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="500">0</div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">Trainers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="100">0</div>
+        <div class="stat-label">% Commitment</div>
+      </div>
     </section>
 
     <!-- Values Accordion -->
-    <section style="margin:3rem 0;" class="animate-on-scroll">
+    <section style="margin:4rem 0;" class="animate-on-scroll">
       <h2 style="text-align:center; margin-bottom:2rem;">Our Core Values</h2>
       <div class="faq-item">
-        <button class="faq-question">Community First</button>
+        <button class="faq-question">🤝 Community First</button>
         <div class="faq-answer">
-          <p>We believe fitness is better together. Our members support each other, celebrate wins, and push through challenges as a team.</p>
+          <p>We believe fitness is better together. Our members support each other, celebrate wins, and push through challenges as a team. Weekly events, challenges, and socials keep the energy high.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">Science-Backed Methods</button>
+        <button class="faq-question">🔬 Science-Backed Methods</button>
         <div class="faq-answer">
-          <p>Every program is designed by certified professionals using the latest research in exercise physiology and nutrition.</p>
+          <p>Every program is designed by certified professionals using the latest research in exercise physiology, nutrition, and recovery. No fads, just results.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">Inclusive Environment</button>
+        <button class="faq-question">🌍 Inclusive Environment</button>
         <div class="faq-answer">
-          <p>Everyone belongs at PeakFit. All bodies, all levels, all goals. We meet you where you are and help you grow.</p>
+          <p>Everyone belongs at PeakFit. All bodies, all levels, all goals. We meet you where you are and help you grow—without judgment, without pressure.</p>
         </div>
       </div>
     </section>
 
     <!-- Team Section -->
-    <section style="margin:3rem 0;" class="animate-on-scroll">
+    <section style="margin:4rem 0;" class="animate-on-scroll">
       <h2 style="text-align:center; margin-bottom:2rem;">Meet Our Trainers</h2>
-      <div class="features">
-        <div class="feature-card">
+      <div class="features" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.5rem;">
+        <div class="feature-card" style="text-align:center;">
+          <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1.5rem;">AR</div>
           <h3>Alex Rivera</h3>
-          <p>Strength & Conditioning Specialist • 10+ years experience</p>
+          <p style="color:var(--accent-blue); font-size:0.9rem; margin-bottom:0.5rem;">Strength & Conditioning</p>
+          <p style="font-size:0.9rem; color:var(--text-muted);">10+ years experience • Former collegiate athlete • NASM-CPT</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" style="text-align:center;">
+          <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1.5rem;">JC</div>
           <h3>Jamie Chen</h3>
-          <p>HIIT & Mobility Coach • Former competitive athlete</p>
+          <p style="color:var(--accent-blue); font-size:0.9rem; margin-bottom:0.5rem;">HIIT & Mobility</p>
+          <p style="font-size:0.9rem; color:var(--text-muted);">Former competitive athlete • ACE-certified • Mobility specialist</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" style="text-align:center;">
+          <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1.5rem;">TK</div>
           <h3>Taylor Kim</h3>
-          <p>Yoga & Recovery Expert • Certified mindfulness instructor</p>
+          <p style="color:var(--accent-blue); font-size:0.9rem; margin-bottom:0.5rem;">Yoga & Recovery</p>
+          <p style="font-size:0.9rem; color:var(--text-muted);">RYT-500 certified • Mindfulness instructor • Injury prevention expert</p>
         </div>
       </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section style="margin:4rem 0;" class="animate-on-scroll">
+      <h2 style="text-align:center; margin-bottom:2rem;">Our Journey</h2>
+      <div style="max-width:600px; margin:0 auto; position:relative; padding-left:2rem; border-left:2px solid var(--border-color);">
+        <div style="margin-bottom:2rem; position:relative;">
+          <span style="position:absolute; left:-2.6rem; top:0; width:16px; height:16px; border-radius:50%; background:var(--accent-blue);"></span>
+          <h4 style="margin:0 0 0.3rem 0; color:var(--text-main);">2020</h4>
+          <p style="margin:0; color:var(--text-muted);">PeakFit opens its doors with 3 trainers and a vision.</p>
+        </div>
+        <div style="margin-bottom:2rem; position:relative;">
+          <span style="position:absolute; left:-2.6rem; top:0; width:16px; height:16px; border-radius:50%; background:var(--accent-blue);"></span>
+          <h4 style="margin:0 0 0.3rem 0; color:var(--text-main);">2022</h4>
+          <p style="margin:0; color:var(--text-muted);">Expanded facility + added recovery zone and nutrition coaching.</p>
+        </div>
+        <div style="position:relative;">
+          <span style="position:absolute; left:-2.6rem; top:0; width:16px; height:16px; border-radius:50%; background:var(--accent-blue);"></span>
+          <h4 style="margin:0 0 0.3rem 0; color:var(--text-main);">2026</h4>
+          <p style="margin:0; color:var(--text-muted);">500+ members, 50+ trainers, and a community that grows every day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="text-align:center; padding:3rem 2rem; background:var(--bg-card); border-radius:12px; margin:3rem 0;" class="animate-on-scroll">
+      <h2 style="margin-bottom:1rem;">Ready to Join the Community?</h2>
+      <p style="color:var(--text-muted); margin-bottom:2rem;">Start with a free trial class—no commitment, just results.</p>
+      <a href="contact.html" class="btn">Book Your Free Trial</a>
     </section>
   </main>
 
@@ -81,11 +141,35 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          if (entry.target.querySelector('.stat-number')) {
+            animateCounters();
+          }
         }
       });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Counter Animation
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + (target > 100 ? '+' : '');
+          }
+        };
+        updateCounter();
+      });
+    }
 
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(button => {
