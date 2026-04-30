@@ -17,50 +17,72 @@
     </nav>
   </header>
 
-  <main>
-    <section class="page-header animate-on-scroll">
-      <h1>Get In Touch</h1>
+  <main class="contact-container animate-on-scroll">
+    <!-- LEFT COLUMN: Form -->
+    <section class="contact-form-section">
+      <div class="card">
+        <h2 style="margin-bottom:1.5rem;">Send us a Message</h2>
+        
+        <!-- Success Message -->
+        <div id="successMessage" class="form-success">
+          ✅ <strong>Message sent!</strong> We'll reply within 24 hours.
+        </div>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required rows="5" placeholder="I'd like to book a trial session..."></textarea>
+          </div>
+          <button type="submit" class="btn" id="submitBtn" style="width:100%;">
+            <span id="btnText">Send Message</span>
+            <span id="btnSpinner" class="spinner" style="display:none;"></span>
+          </button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </div>
     </section>
 
-    <section class="content animate-on-scroll">
-      <p>Ready to start? Drop by for a tour or send us a message below.</p>
-      
-      <!-- Success Message (Hidden by Default) -->
-      <div id="successMessage" class="form-success">
-        ✅ <strong>Message sent!</strong> We'll reply within 24 hours.
+    <!-- RIGHT COLUMN: Info & Map -->
+    <section class="contact-info-section">
+      <div class="card info-card">
+        <h3>📍 Location</h3>
+        <p>123 Wellness Blvd<br>Fit City, FC 90210</p>
+        
+        <h3>📞 Contact</h3>
+        <p>hello@peakfit.example<br>(555) 123-4567</p>
+        
+        <h3>🕒 Hours</h3>
+        <p>Mon–Fri: 5AM – 10PM<br>Sat–Sun: 7AM – 8PM</p>
       </div>
 
-      <form id="contactForm" class="contact-form">
-        <div class="form-group">
-          <label for="name">Full Name *</label>
-          <input type="text" id="name" name="name" required placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required placeholder="john@example.com">
-        </div>
-        <div class="form-group">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" required rows="5" placeholder="I'd like to book a trial session..."></textarea>
-        </div>
-        <button type="submit" class="btn" id="submitBtn">
-          <span id="btnText">Send Message</span>
-          <span id="btnSpinner" class="spinner" style="display:none;"></span>
-        </button>
-        <p id="formStatus" class="form-status"></p>
-      </form>
+      <!-- Embedded Map -->
+      <div class="card map-card">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968459391!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus" 
+          width="100%" 
+          height="250" 
+          style="border:0; border-radius:8px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-      <!-- Contact Info + Social -->
-      <div class="contact-info" style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border-color);">
-        <p><strong>Location:</strong> 123 Wellness Blvd, Fit City, FC 90210</p>
-        <p><strong>Email:</strong> hello@peakfit.example</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Hours:</strong> Mon–Fri: 5AM–10PM • Sat–Sun: 7AM–8PM</p>
-        
+      <!-- Socials -->
+      <div class="card social-card">
+        <h3>Follow Us</h3>
         <div class="social-links">
-          <a href="#" class="social-link" title="Instagram">IG</a>
-          <a href="#" class="social-link" title="Facebook">FB</a>
-          <a href="#" class="social-link" title="Twitter">TW</a>
+          <a href="#" class="social-link">IG</a>
+          <a href="#" class="social-link">FB</a>
+          <a href="#" class="social-link">TW</a>
         </div>
       </div>
     </section>
@@ -70,23 +92,17 @@
     <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
   </footer>
 
-  <!-- Interactive JavaScript -->
   <script>
-    // ===== SCROLL ANIMATIONS =====
-    const observerOptions = { threshold: 0.1 };
+    // Scroll Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // ===== CONTACT FORM WITH LOADING STATE =====
+    // Form Handling
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
@@ -101,7 +117,6 @@
         message: document.getElementById('message').value
       };
 
-      // Show loading state
       btn.disabled = true;
       btnText.textContent = 'Sending';
       btnSpinner.style.display = 'inline-block';
@@ -119,7 +134,6 @@
         if (res.ok) {
           successMsg.classList.add('show');
           document.getElementById('contactForm').reset();
-          status.textContent = '';
         } else {
           throw new Error(data.error || 'Failed');
         }
@@ -127,7 +141,6 @@
         status.textContent = '❌ ' + err.message;
         status.style.color = '#f87171';
       } finally {
-        // Reset button
         btn.disabled = false;
         btnText.textContent = 'Send Message';
         btnSpinner.style.display = 'none';
