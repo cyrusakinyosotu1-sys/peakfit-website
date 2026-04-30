@@ -14,18 +14,22 @@
       <a href="about.html">About</a>
       <a href="classes.html">Classes</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html" class="btn" style="padding:0.4rem 1rem; font-size:0.9rem; margin-left:0.5rem;">Login</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
-</nav>
     </nav>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero animate-on-scroll">
-      <h1>Transform Your Body.<br>Elevate Your Life.</h1>
-      <p>Expert coaching, premium equipment, and a community that pushes you past your limits.</p>
-      <a href="classes.html" class="btn">Explore Programs</a>
+    <!-- Hero with Background Image -->
+    <section class="hero animate-on-scroll" style="background: linear-gradient(135deg, rgba(0,68,204,0.85), rgba(0,212,255,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; text-align: center; padding: 6rem 2rem; color: white; border-radius: 12px; margin: 2rem auto; max-width: 1200px;">
+      <h1 style="font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Transform Your Body.<br>Elevate Your Life.</h1>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Expert coaching, premium equipment, and a community that pushes you past your limits.</p>
+      <a href="classes.html" class="btn" style="background: white; color: var(--primary-blue); font-weight: 700; padding: 1rem 2rem; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Explore Programs</a>
+    </section>
+
+    <!-- Motivational Quote -->
+    <section class="quote-section animate-on-scroll" style="background: var(--bg-card); padding: 3rem 2rem; text-align: center; border-radius: 12px; margin: 3rem auto; max-width: 900px; border-left: 4px solid var(--accent-blue);">
+      <p style="font-size: 1.5rem; font-style: italic; color: var(--text-main); margin-bottom: 1rem;">"The only bad workout is the one that didn't happen."</p>
+      <p style="color: var(--text-muted); font-weight: 600;">— Unknown</p>
     </section>
 
     <!-- Stats Counter -->
@@ -48,19 +52,41 @@
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- Features with Images -->
     <section class="features">
-      <div class="feature-card animate-on-scroll">
+      <div class="feature-card animate-on-scroll" style="background: linear-gradient(135deg, rgba(0,68,204,0.1), rgba(0,212,255,0.1)), var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c149a?auto=format&fit=crop&w=400&q=80" alt="Personal Training" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Personal Training</h3>
         <p>Custom programs built around your goals, schedule, and recovery needs.</p>
       </div>
-      <div class="feature-card animate-on-scroll">
+      <div class="feature-card animate-on-scroll" style="background: linear-gradient(135deg, rgba(0,68,204,0.1), rgba(0,212,255,0.1)), var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Group Classes" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Group Classes</h3>
         <p>High-energy sessions led by certified instructors who keep you accountable.</p>
       </div>
-      <div class="feature-card animate-on-scroll">
+      <div class="feature-card animate-on-scroll" style="background: linear-gradient(135deg, rgba(0,68,204,0.1), rgba(0,212,255,0.1)), var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80" alt="Open Gym" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Open Gym Access</h3>
         <p>Train on your terms with commercial-grade equipment available daily.</p>
+      </div>
+    </section>
+
+    <!-- Post-Workout Motivation -->
+    <section class="animate-on-scroll" style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); padding: 3rem 2rem; border-radius: 12px; margin: 3rem auto; max-width: 1000px; text-align: center; color: white;">
+      <h2 style="margin-bottom: 1.5rem;">💪 Post-Workout Wisdom</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
+          <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">"Sweat is just fat crying."</p>
+          <p style="font-size: 0.9rem; opacity: 0.9;">Keep pushing!</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
+          <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">"Your body can stand almost anything. It's your mind you have to convince."</p>
+          <p style="font-size: 0.9rem; opacity: 0.9;">Believe in yourself!</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
+          <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">"Don't stop when you're tired. Stop when you're done."</p>
+          <p style="font-size: 0.9rem; opacity: 0.9;">Finish strong!</p>
+        </div>
       </div>
     </section>
 
@@ -70,27 +96,21 @@
       <div class="testimonial-card">
         <p>"PeakFit changed my life. The trainers actually care about your progress, not just your membership fee."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">MO</div>
-          <div>
-            <strong>micheal okafor</strong><br>
-            <small>Member since 2024</small>
-          </div>
+          <div class="author-avatar">JD</div>
+          <div><strong>Jane Doe</strong><br><small>Member since 2024</small></div>
         </div>
       </div>
       <div class="testimonial-card">
         <p>"The HIIT classes are intense but so worth it. I've never felt stronger or more confident."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">EK</div>
-          <div>
-            <strong>emmaunel korodae</strong><br>
-            <small>Member since 2025</small>
-          </div>
+          <div class="author-avatar">MS</div>
+          <div><strong>Mike Smith</strong><br><small>Member since 2025</small></div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section style="text-align:center; padding:3rem 2rem; background:var(--bg-card); border-radius:12px; margin:3rem 0;" class="animate-on-scroll">
+    <section style="text-align:center; padding:3rem 2rem; background:var(--bg-card); border-radius:12px; margin:3rem 0; border: 1px solid var(--border-color);" class="animate-on-scroll">
       <h2 style="margin-bottom:1rem;">Ready to Start Your Journey?</h2>
       <p style="color:var(--text-muted); margin-bottom:2rem;">Join PeakFit today and get your first week free.</p>
       <a href="contact.html" class="btn">Get Started Free</a>
@@ -107,13 +127,10 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          if (entry.target.querySelector('.stat-number')) {
-            animateCounters();
-          }
+          if (entry.target.querySelector('.stat-number')) animateCounters();
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     // Counter Animation
@@ -123,30 +140,28 @@
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
-        
         const updateCounter = () => {
           current += step;
           if (current < target) {
             counter.textContent = Math.floor(current) + '+';
             requestAnimationFrame(updateCounter);
-          } else {
-            counter.textContent = target + '+';
-          }
+          } else counter.textContent = target + '+';
         };
         updateCounter();
       });
     }
+
     // Theme Toggle
-function toggleTheme() {
-  const html = document.documentElement;
-  const isLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  document.querySelector('.theme-toggle').textContent = isLight ? '☀️' : '🌙';
-  localStorage.setItem('peakfit-theme', isLight ? 'dark' : 'light');
-}
-const savedTheme = localStorage.getItem('peakfit-theme') || 'dark';
-document.documentElement.setAttribute('data-theme', savedTheme);
-document.querySelector('.theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isLight = html.getAttribute('data-theme') === 'light';
+      html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      document.querySelector('.theme-toggle').textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('peakfit-theme', isLight ? 'dark' : 'light');
+    }
+    const savedTheme = localStorage.getItem('peakfit-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
   </script>
 </body>
 </html>
