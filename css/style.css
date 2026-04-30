@@ -717,3 +717,65 @@ html { scroll-behavior: smooth; }
   .testimonial-card { padding: 1.5rem; }
   .faq-question { font-size: 1rem; padding: 1rem; }
 }
+/* ===== COMPACT CLASS CARDS ===== */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.classes-grid .class-card {
+  background: var(--bg-card);
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.classes-grid .class-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
+}
+
+.classes-grid .class-card h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.3rem 0;
+  color: var(--text-main);
+}
+
+.classes-grid .class-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.classes-grid .class-card span {
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.classes-grid .price {
+  font-size: 1.05rem !important;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-top: 0.3rem;
+}
+
+/* Responsive tweak for small screens */
+@media (max-width: 600px) {
+  .classes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .classes-grid .class-card {
+    padding: 1rem;
+  }
+}
