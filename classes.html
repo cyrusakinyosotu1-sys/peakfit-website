@@ -34,26 +34,10 @@
       <button class="filter-btn" data-filter="cardio">Cardio</button>
       <button class="filter-btn" data-filter="strength">Strength</button>
       <button class="filter-btn" data-filter="recovery">Recovery</button>
-      <button class="filter-btn" data-filter="combat">Combat</button>
     </div>
 
     <section class="classes-grid">
-      <article class="class-card animate-on-scroll show-filter" data-type="cardio">
-        <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1ca9b?w=400&h=300&fit=crop" alt="HIIT Burn" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>HIIT Burn</h3>
-        <p>30-minute high-intensity intervals designed to maximize calorie burn and cardiovascular endurance.</p>
-        <span>Mon / Wed / Fri • 6:30 AM</span>
-        <div class="price" data-monthly="$29" data-yearly="$232">$29/mo</div>
-      </article>
-
-      <article class="class-card animate-on-scroll show-filter" data-type="strength">
-        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=400&h=300&fit=crop" alt="Strength" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>Strength & Conditioning</h3>
-        <p>Compound lifts, progressive overload, and mobility work for real-world performance.</p>
-        <span>Tue / Thu • 5:00 PM</span>
-        <div class="price" data-monthly="$39" data-yearly="$312">$39/mo</div>
-      </article>
-
+      <!-- 1. Yoga & Recovery -->
       <article class="class-card animate-on-scroll show-filter" data-type="recovery">
         <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop" alt="Yoga" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Yoga & Recovery</h3>
@@ -62,6 +46,7 @@
         <div class="price" data-monthly="$25" data-yearly="$200">$25/mo</div>
       </article>
 
+      <!-- 2. Spin Cycling -->
       <article class="class-card animate-on-scroll show-filter" data-type="cardio">
         <img src="https://images.unsplash.com/photo-1534258936925-c48947387603?w=400&h=300&fit=crop" alt="Spin" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Spin Cycling</h3>
@@ -70,14 +55,25 @@
         <div class="price" data-monthly="$25" data-yearly="$200">$25/mo</div>
       </article>
 
-      <article class="class-card animate-on-scroll show-filter" data-type="combat">
-        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400&h=300&fit=crop" alt="Boxing" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>Boxing & MMA</h3>
-        <p>Technical striking, defensive drills, and conditioning for confidence and total-body fitness.</p>
-        <span>Tue / Thu • 6:00 PM</span>
-        <div class="price" data-monthly="$35" data-yearly="$280">$35/mo</div>
+      <!-- 3. HIIT Burn -->
+      <article class="class-card animate-on-scroll show-filter" data-type="cardio">
+        <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1ca9b?w=400&h=300&fit=crop" alt="HIIT Burn" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+        <h3>HIIT Burn</h3>
+        <p>30-minute high-intensity intervals designed to maximize calorie burn and cardiovascular endurance.</p>
+        <span>Mon / Wed / Fri • 6:30 AM</span>
+        <div class="price" data-monthly="$29" data-yearly="$232">$29/mo</div>
       </article>
 
+      <!-- 4. Strength & Conditioning -->
+      <article class="class-card animate-on-scroll show-filter" data-type="strength">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=400&h=300&fit=crop" alt="Strength" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+        <h3>Strength & Conditioning</h3>
+        <p>Compound lifts, progressive overload, and mobility work for real-world performance.</p>
+        <span>Tue / Thu • 5:00 PM</span>
+        <div class="price" data-monthly="$39" data-yearly="$312">$39/mo</div>
+      </article>
+
+      <!-- 5. Pilates Core -->
       <article class="class-card animate-on-scroll show-filter" data-type="recovery">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop" alt="Pilates" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
         <h3>Pilates Core</h3>
@@ -86,36 +82,13 @@
         <div class="price" data-monthly="$28" data-yearly="$224">$28/mo</div>
       </article>
 
-      <article class="class-card animate-on-scroll show-filter" data-type="strength">
-        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&h=300&fit=crop" alt="CrossFit" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>CrossFit</h3>
-        <p>Constantly varied functional movements at high intensity. Build strength, endurance, and mental toughness.</p>
-        <span>Mon / Wed / Fri • 5:30 PM</span>
-        <div class="price" data-monthly="$45" data-yearly="$360">$45/mo</div>
-      </article>
-
-      <article class="class-card animate-on-scroll show-filter" data-type="cardio">
-        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop" alt="Zumba" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>Zumba Dance</h3>
-        <p>Latin-inspired dance fitness party. Burn calories while having fun to upbeat music.</p>
-        <span>Tue / Thu • 7:00 AM</span>
-        <div class="price" data-monthly="$22" data-yearly="$176">$22/mo</div>
-      </article>
-
-      <article class="class-card animate-on-scroll show-filter" data-type="strength">
-        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=400&h=300&fit=crop" alt="Barre" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>Barre Sculpt</h3>
-        <p>Ballet-inspired workouts combining small isometric movements with high reps for lean muscle tone.</p>
-        <span>Mon / Wed / Fri • 9:00 AM</span>
-        <div class="price" data-monthly="$30" data-yearly="$240">$30/mo</div>
-      </article>
-
+      <!-- 6. Boxing & MMA -->
       <article class="class-card animate-on-scroll show-filter" data-type="combat">
-        <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=400&h=300&fit=crop" alt="Kickboxing" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-        <h3>Kickboxing</h3>
-        <p>High-intensity cardio kickboxing combining martial arts techniques with traditional cardio exercises.</p>
-        <span>Sat • 11:00 AM</span>
-        <div class="price" data-monthly="$32" data-yearly="$256">$32/mo</div>
+        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400&h=300&fit=crop" alt="Boxing" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+        <h3>Boxing & MMA</h3>
+        <p>Technical striking, defensive drills, and conditioning for confidence and total-body fitness.</p>
+        <span>Tue / Thu • 6:00 PM</span>
+        <div class="price" data-monthly="$35" data-yearly="$280">$35/mo</div>
       </article>
     </section>
 
