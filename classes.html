@@ -14,100 +14,79 @@
       <a href="about.html">About</a>
       <a href="classes.html" class="active">Classes</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html" class="btn" style="padding:0.4rem 1rem; font-size:0.9rem; margin-left:0.5rem;">Login</a>
-</nav>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
     </nav>
   </header>
 
   <main>
-    <section class="page-header animate-on-scroll">
-      <h1>Training Programs</h1>
-    </section>
+    <section class="page-header animate-on-scroll"><h1>Training Programs</h1></section>
 
-    <!-- Pricing Toggle -->
     <div class="pricing-toggle animate-on-scroll">
       <button class="toggle-btn active" data-period="monthly">Monthly</button>
       <button class="toggle-btn" data-period="yearly">Yearly <span style="color:#4ade80; font-size:0.8rem;">(Save 20%)</span></button>
     </div>
 
-    <!-- Classes Grid (6 Compact Cards) -->
+    <div class="filter-bar animate-on-scroll">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="cardio">Cardio</button>
+      <button class="filter-btn" data-filter="strength">Strength</button>
+      <button class="filter-btn" data-filter="recovery">Recovery</button>
+    </div>
+
     <section class="classes-grid">
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="cardio">
         <h3>HIIT Burn</h3>
-        <p>30-minute high-intensity intervals designed to maximize calorie burn and cardiovascular endurance.</p>
+        <p>30-minute high-intensity intervals designed to maximize calorie burn.</p>
         <span>Mon / Wed / Fri • 6:30 AM</span>
         <div class="price" data-monthly="$29" data-yearly="$232">$29/mo</div>
       </article>
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="strength">
         <h3>Strength & Conditioning</h3>
-        <p>Compound lifts, progressive overload, and mobility work for real-world performance.</p>
+        <p>Compound lifts, progressive overload, and mobility work.</p>
         <span>Tue / Thu • 5:00 PM</span>
         <div class="price" data-monthly="$39" data-yearly="$312">$39/mo</div>
       </article>
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="recovery">
         <h3>Yoga & Recovery</h3>
-        <p>Improve flexibility, reduce soreness, and reset your nervous system for faster gains.</p>
+        <p>Improve flexibility, reduce soreness, and reset your nervous system.</p>
         <span>Sat • 9:00 AM</span>
         <div class="price" data-monthly="$25" data-yearly="$200">$25/mo</div>
       </article>
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="cardio">
         <h3>Spin Cycling</h3>
-        <p>High-energy indoor cycling sessions with rhythm-based coaching and heart-rate tracking.</p>
+        <p>High-energy indoor cycling with rhythm-based coaching.</p>
         <span>Mon / Wed / Fri • 7:00 AM</span>
         <div class="price" data-monthly="$25" data-yearly="$200">$25/mo</div>
       </article>
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="strength">
         <h3>Boxing & MMA</h3>
-        <p>Technical striking, defensive drills, and conditioning for confidence and total-body fitness.</p>
+        <p>Technical striking, defensive drills, and total-body conditioning.</p>
         <span>Tue / Thu • 6:00 PM</span>
         <div class="price" data-monthly="$35" data-yearly="$280">$35/mo</div>
       </article>
-      <article class="class-card animate-on-scroll">
+      <article class="class-card animate-on-scroll show-filter" data-type="recovery">
         <h3>Pilates Core</h3>
-        <p>Controlled movements targeting deep stabilizers, posture, and functional strength.</p>
+        <p>Controlled movements targeting deep stabilizers and posture.</p>
         <span>Sat / Sun • 10:00 AM</span>
         <div class="price" data-monthly="$28" data-yearly="$224">$28/mo</div>
       </article>
     </section>
 
-    <!-- FAQ Section -->
     <section style="margin:3rem 0;" class="animate-on-scroll">
       <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <button class="faq-question">Do I need experience to join?</button>
-        <div class="faq-answer">
-          <p>No! All our classes offer modifications for every fitness level. Our trainers will help you start safely and progress at your own pace.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What should I bring to class?</button>
-        <div class="faq-answer">
-          <p>Just water, a towel, and comfortable workout clothes. We provide all equipment, mats, and towels if needed.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Can I cancel my membership?</button>
-        <div class="faq-answer">
-          <p>Yes, anytime. No contracts, no hidden fees. Cancel online with 24-hour notice.</p>
-        </div>
-      </div>
+      <div class="faq-item"><button class="faq-question">Do I need experience?</button><div class="faq-answer"><p>No! All classes offer modifications for every level.</p></div></div>
+      <div class="faq-item"><button class="faq-question">What should I bring?</button><div class="faq-answer"><p>Water, towel, and comfortable clothes. We provide equipment.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Can I cancel anytime?</button><div class="faq-answer"><p>Yes. No contracts, no hidden fees. 24-hour notice online.</p></div></div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 PeakFit Fitness. Built for performance.</p>
-  </footer>
+  <footer><p>&copy; 2026 PeakFit Fitness. Built for performance.</p></footer>
 
   <script>
     // Scroll Animations
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     // Pricing Toggle
@@ -116,21 +95,44 @@
         document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const period = btn.dataset.period;
-        document.querySelectorAll('.price').forEach(price => {
-          price.textContent = price.dataset[period] + (period === 'monthly' ? '/mo' : '/yr');
+        document.querySelectorAll('.price').forEach(p => p.textContent = p.dataset[period] + (period === 'monthly' ? '/mo' : '/yr'));
+      });
+    });
+
+    // Class Filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.class-card').forEach(card => {
+          const show = filter === 'all' || card.dataset.type === filter;
+          card.style.display = show ? 'flex' : 'none';
+          if (show) { card.classList.remove('show-filter'); void card.offsetWidth; card.classList.add('show-filter'); }
         });
       });
     });
 
     // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
+        if (!item.classList.contains('active')) item.classList.add('active');
       });
     });
+
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isLight = html.getAttribute('data-theme') === 'light';
+      html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      document.querySelector('.theme-toggle').textContent = isLight ? '☀️' : '';
+      localStorage.setItem('peakfit-theme', isLight ? 'dark' : 'light');
+    }
+    const savedTheme = localStorage.getItem('peakfit-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
   </script>
 </body>
 </html>
